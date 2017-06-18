@@ -1,19 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import vueResource from 'vue-resource'
 // 引入模板
 import Goods from '@/components/goods/goods'
 import Ratings from '@/components/ratings/ratings'
 import Seller from '@/components/seller/seller'
 
 Vue.use(Router)
-Vue.use(vueResource)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/goods'
+      component: Goods
     },
     {
       path: '/goods',
@@ -32,3 +30,10 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  next()
+})
+
+export default router
